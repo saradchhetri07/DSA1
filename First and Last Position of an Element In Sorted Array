@@ -1,0 +1,52 @@
+#include <iostream>
+#include <algorithm>
+pair<int, int> firstAndLastPosition(vector<int>& arr, int n, int k)
+{
+    // Write your code here
+    int left=0;
+    int right = n-1;
+    int s=0;
+    int e = n-1;
+    pair<int,int> ans;
+    ans.first = -1;
+    ans.second = -1;
+   //for first occurence 
+    while(left<=right){
+        int mid = left + ((right-left)/2);
+        if(arr[mid]==k){
+            ans.first = mid ;
+            right = mid-1;
+           // cout<<"enter 1st loop"<<mid<<endl;
+            
+        } if(k<arr[mid]){
+           right = mid-1;
+           
+        } if(k>arr[mid]){
+            left = mid+1;
+        }
+        
+    }
+    
+    //for last occurence
+    while(s<=e){
+        int mid = s + ((e-s)/2);
+        if(arr[mid]==k){
+            ans.second = mid;
+            s = mid+1;
+           // cout<<"enter 2nd loop"<<mid<<endl;
+            
+        }else if(k<arr[mid]){
+           e = mid-1;
+           
+        }else if(k>arr[mid]){
+            s = mid+1;
+        }else{
+            ans.second = -1;
+        }
+      
+    }
+    
+    return ans;
+ 
+    
+}
