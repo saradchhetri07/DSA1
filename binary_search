@@ -4,7 +4,7 @@
 using namespace std;
 int binsearch(int arr[],int key,int left,int right){
         
-    int mid = (left+right)/2;
+    int mid = (left+right)/2; // mid = left + (right-left)/2;
     while(left<=right){
         
         if(key==arr[mid]){
