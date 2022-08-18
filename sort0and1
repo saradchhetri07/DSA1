@@ -1,0 +1,41 @@
+#include<iostream>
+#include<vector>
+#include <bits/stdc++.h>
+using namespace std;
+
+ void sortarray(int arr[],int size){
+    int left =0;
+    int right = size-1;
+    while(left<right){
+        while(arr[left]==0 && left<right){
+          cout<<"1st"<<endl;
+            left++;
+          cout<<left<<endl;
+          cout<<right<<endl;
+        }
+        while(arr[right] == 1 ){
+          cout<<"2nd"<<endl;
+            right--;
+        }
+        if(arr[left]==1 && arr[right]==0 ){
+          cout<<"swapping"<<endl;
+            swap(arr[left],arr[right]);
+            left++;
+            right--;
+            
+        }
+    }
+    
+    
+}
+
+int main(){
+  int arr[8] ={1,1,0,0,0,0,1,0}; 
+ 
+   sortarray(arr,8);
+   for(int k=0;k<8;k++){
+       cout<<arr[k]<<" ";
+   }
+}
+
+
