@@ -1,0 +1,87 @@
+int found1 =-1;
+int found2 = -1;
+int firstBinary(vector<int>& arr,int left,int right,int k){
+    int mid;
+    while(left<=right){
+        mid=left+(right-left)/2;
+        if(arr[mid]==k){
+            found1 = mid;
+            return mid;
+        }else if(arr[mid]>k){
+        right = mid-1;
+        }else if(arr[mid]<k){
+            left = mid+1;
+        }
+    }return found1;
+    
+}
+int secondBinary(vector<int>& arr,int left,int right,int k){
+    int mid;
+    while(left<=right){
+        mid=left+(right-left)/2;
+        if(arr[mid]==k){
+            found2 = mid;
+            return mid;
+        }else if(arr[mid]>k){
+            right = mid-1;
+        }else if(arr[mid]<k){
+            left = mid+1;
+        }
+    }return found2;
+    
+}
+int findpeak(vector<int>& arr,int n){
+    int s=0;
+    int e=n-1;
+    int mid;
+   
+    
+    while(s<e){
+    mid = s +(e-s)/2;
+        
+    if(arr[mid]>=arr[0]){
+        //return mid;
+    s = mid+1;
+        
+    }else {
+    e=mid;
+    }
+    }
+    return s;
+    
+}
+
+
+int findPosition(vector<int>& arr, int n, int k)
+{
+    // Write your code here.
+    // Return the position of K in ARR else return -1.
+    int peak = findpeak(arr,n);
+    int ans1;
+    //return peak;
+    if(arr[0]>k){
+        int ans2 = secondBinary(arr,peak,n-1,k);
+        return ans2;
+         
+    }else if(n != 1){
+        ans1 = firstBinary(arr,0,peak-1,k);
+        return ans1;
+    }else {
+    
+    ans1 = firstBinary(arr,0,peak,k);
+         return ans1;
+}
+    
+    
+    
+//     int ans2 = secondBinary(arr,peak+1,n-1,k);
+//     if(ans1==-1 && ans2 == -1){
+//         return -1;
+//     }
+//     else if(ans1>-1){
+//         return ans1;
+//     }else if(ans2>-1){
+//         return ans2;
+//     }
+    
+}
