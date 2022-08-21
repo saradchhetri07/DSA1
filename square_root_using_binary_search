@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int mySqrt(int N) {
+        
+
+
+      int left = 0;
+     long long int right = N/2;
+    
+    if(N==1 || N==2 || N==3){
+        return 1;
+    }
+        long long int mid;
+        long long int leftpower;
+         long long int rightpower;
+    while(left<=right){
+     mid = left + (right-left)/2;
+      leftpower = (mid-1)*(mid-1);
+    rightpower = (mid+1)*(mid+1);
+      
+        if(mid*mid==N){
+            return mid;
+        }else if((mid*mid)<N){
+            if((leftpower < N) && (N<(rightpower))){
+            return mid;
+        }
+                left = mid +1;
+        } else if(mid*mid>N){
+            right = mid;
+        }
+        
+    }return mid;
+    // Write your code here.
+}
+    
+};
