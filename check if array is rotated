@@ -1,0 +1,33 @@
+//https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/submissions/
+
+class Solution {
+public:
+    bool check(vector<int>& nums) {
+        vector<int> temp(nums.size());
+        if(is_sorted(nums.begin(),nums.end())){
+            return true;
+        }
+        int k;
+        for(int i=0;i<nums.size();i++){
+        if(nums[i+1]<nums[i]){
+            
+            k = nums.size() -(i+1);
+            break;
+        }
+        
+    }
+    for(int i=0;i<nums.size();i++){
+        temp[(i+k)%nums.size()]=nums[i];
+    }
+        int range = nums.size();
+        nums = temp;
+        bool issorted=is_sorted(nums.begin(),nums.end());
+        if(issorted){
+            return true;
+        }else{
+            return false;
+        }
+}
+
+  
+};
