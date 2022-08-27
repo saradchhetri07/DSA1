@@ -1,0 +1,48 @@
+class Solution
+{
+    public:
+    //Function to find the maximum occurring character in a string.
+    char getMaxOccuringChar(string str)
+    {
+        // Your code here
+        char val='o';
+        int lastval='z';
+        int finalcount=1;
+        int enter =0;
+        if(str.size()==1){
+            return str[0];
+        }
+        for(int i=0;i<str.size();i++){
+            int count =1;
+            for(int j=i+1;j<str.size();j++){
+                
+                if(str[i]==str[j]){
+                    enter++;
+                    int finalval = str[j];
+                    count++;
+                    if(count==finalcount){
+                         if(finalval<lastval){
+                            lastval = finalval;
+                            val = str[j];
+                        }
+                    }if(count>finalcount){
+                         val = str[j];
+                         finalcount = count;
+                         lastval= finalval;
+                    }
+                }
+               
+            }
+             if(enter==0){
+                 int finalval = str[i];
+                        if(finalval<lastval){
+                            lastval = finalval;
+                            val = lastval;
+                        }
+                    
+                }
+           
+        }return val;
+    }
+
+};
