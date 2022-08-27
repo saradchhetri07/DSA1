@@ -1,0 +1,26 @@
+string replaceSpaces(string &str){
+	// Write your code here.
+    int i=0;
+    string addval = "@40";
+    string temp = "";
+     while(str[i]!='\0'){
+         
+         if(str[i]!=' '){
+             temp.push_back(str[i]);
+         }
+        
+        
+        if(str[i]==' '){
+           
+            for(int k=0;k<3;k++){
+               
+                temp.push_back(addval[k]);
+                
+            }
+        }
+         i++;
+         
+    }
+    str = temp;
+    return str;
+}
