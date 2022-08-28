@@ -1,0 +1,59 @@
+class Solution {
+private: 
+    bool check(int count1[],int count2[]){
+        for(int i=0;i<26;i++){
+            if(count1[i]!=count2[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+public:
+    bool checkInclusion(string s1, string s2) {
+      int count1[26] = {0};
+    int count2[26] ={0};
+        if(s1.size()>s2.size()){
+            return false;
+        }
+      int windowsize = s1.length();
+      int i=0;
+      for(int i=0;i<s1.size();i++){
+          int index = s1[i] - 'a';
+          count1[index] +=1;
+      }
+       // for(int i=0;i<=(s2.size()-windowsize);i++){
+       //     int j=i;
+       //     while(j<(i+windowsize)){
+       //         int newchar = s2[j] -'a';
+       //         count2[newchar]+=1;
+       //         j++;
+       //     }
+       //     if(check(count1,count2)){
+       //         return true;
+       //     }
+       //     int oldchar = s2[i] - 'a';
+       //      count2[oldchar]--;  
+       // }
+       //  return false;
+      while(i<windowsize){
+          int index = s2[i]-'a';
+          count2[index]++;
+          i++;
+      }
+      if(check(count1,count2)){
+          return true;
+      }
+      while(i<s2.size()){
+          int newchar = s2[i]-'a';
+          count2[newchar]++;
+          
+          int oldchar = s2[i-windowsize]-'a';
+          count2[oldchar]--; 
+          i++;
+          
+          if(check(count1,count2)){
+              return true;
+          }    
+      }return false;
+    }   
+};
