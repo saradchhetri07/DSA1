@@ -1,0 +1,31 @@
+//https://www.codingninjas.com/codestudio/problems/print-like-a-wave_893268?utm_source=youtube&utm_medium=affiliate&utm_campaign=love_babbar_6&leftPanelTab=0
+
+vector<int> wavePrint(vector<vector<int>> arr, int nRows, int mCols)
+{
+    //Write your code here
+//     for(int i=0;i<nRows;i++){
+//         for(int j=0;j<mCols;j++){
+//             if(mCols%2==0){
+//                 cout<<arr[j][i]<<" ";
+//             }cout<<endl;
+//             if(mCols%2!=0){
+//                 cout<<arr[]
+//             }
+//         }
+//     }
+    vector<int> temp {};
+    for(int j=0;j<mCols;j++){
+        if(j%2==0){
+            //printstraight(arr,nRows,mCols);
+            for(int i=0;i<nRows;i++){
+                temp.push_back(arr[i][j]);
+             }
+        }
+        if(j%2!=0){
+            for(int i=(nRows-1);i>-1;i--){
+                    temp.push_back(arr[i][j]);
+            }
+        }   
+        
+    }return temp;
+} 
