@@ -1,0 +1,27 @@
+//https://leetcode.com/problems/search-a-2d-matrix/submissions/
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+    int row = matrix.size();
+    int col = matrix[0].size();
+        
+    int start = 0;
+    int end = row*col - 1;
+    int mid = start + (end-start)/2;
+    
+    while(start<=end){
+        //if we want to get position of element in 2d matrix then we can get row by dividing mid with col and column by moding mid with col
+        int element = matrix[mid/col][mid%col];
+        if(element == target){
+            return true;
+        }
+        if(target < element){
+            end = mid-1;
+        }
+        if(target > element){
+           start = mid+1;
+        }
+        mid = start + (end-start)/2;
+    }return false;
+    }
+};
