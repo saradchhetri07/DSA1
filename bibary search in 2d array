@@ -1,0 +1,40 @@
+//https://leetcode.com/problems/search-a-2d-matrix-ii/submissions/
+
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int startingRow =0;
+        int startingCol = 0;
+        int endingRow = matrix.size()-1;
+        int endingCol = matrix[0].size()-1;
+        //cout<<endingRow;
+        int mid = startingCol + (endingCol-startingCol)/2;
+        
+        for(int i=0;startingCol<=endingCol && i<=endingRow;i++){
+            // startingCol = 0;
+            // endingCol =matrix[0].size()-1;
+            while(startingCol<=endingCol){
+            if(target==matrix[i][mid]){
+                return true;
+            }
+            if(target<matrix[i][mid]){
+                //cout<<"entered 0";
+                endingCol = mid-1;
+            }
+            if(target>matrix[i][mid]){
+                //cout<<"entered 1";
+                startingCol = mid+1;
+                //cout<<startingCol;
+                //cout<<endingCol;
+            }
+            //because startingCol value goes beyond endingCol and fills heap buffer
+                mid = (startingCol + endingCol)/2;
+              
+            
+            }
+            startingCol = 0;
+            endingCol =matrix[0].size()-1;
+          
+        }return false;
+    }
+};
