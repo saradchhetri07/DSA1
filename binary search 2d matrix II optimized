@@ -1,0 +1,21 @@
+//https://leetcode.com/problems/search-a-2d-matrix-ii/submissions/
+int row = matrix.size();
+        int col = matrix[0].size();
+        
+        int rowIndex = 0;
+        int colIndex = col-1;
+        
+        while(rowIndex<row && colIndex >=0){
+            int element = matrix[rowIndex][colIndex];
+            
+            if(target == element){
+                return true;
+            }
+            if(target<element){
+                colIndex--;
+            }
+            if(target>element){
+                rowIndex++;
+            }
+            
+        }return false;
