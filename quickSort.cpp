@@ -1,89 +1,45 @@
-#include <iostream>
-using namespace std;
-int partition(int *arr,int s,int e){
+
+int partition(vector<int>& arr,int s,int e){
   int pivot = arr[s];
   int count =0;
   for(int i=s+1;i<=e;i++){
-    if(arr[i]<pivot){
+    if(arr[i]<=pivot){
       count++;
     }
   }
   int pivotIndex = s+count;
-swap(arr[s],arr[pivotIndex]);
-  int i=0;
+  swap(arr[pivotIndex],arr[s]);
+  int i=s;
   int j=e;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  // int pivot = arr[s];
-  // int count=0;
-  // for(int i=s+1;i<=e;i++){
-  //   if(arr[i]<=pivot){
-  //     count++;
-  //   }
-  // }
-  // // pivot = arr[count];
-  // int pivotIndex = s+count;
-  // swap(arr[s],arr[pivotIndex]);
-  // int i=s;
-  // int j=e-1;
-  // // while(i<pivotIndex && j>pivotIndex){
-  // //   while(arr[i]<pivot){
-  // //     i++;
-  // //   }
-  // //   while(arr[j]>pivot){
-  // //     j--;
-  // //   }
-  // //   if(i<pivotIndex && j>pivotIndex){
-  // //     swap(arr[i++],arr[j--]);
-  // //   }
-    
-  // // }
-  while(i<=j){
-    if(arr[i]<pivot){
+    while(i<pivotIndex && j>pivotIndex){
+    while(arr[i]<=pivot){
       i++;
     }
-    if(arr[j]>pivot){
+    while(arr[j] > pivot){
       j--;
     }
-    if(arr[i]>pivot && arr[j]<pivot){
+    if(i<pivotIndex && j>pivotIndex){
       swap(arr[i++],arr[j--]);
-    }else{
-      i++;
-      j--;
     }
-  }
+    }
   return pivotIndex;
 }
-void quickSort(int *arr,int s,int e){
+void solve(vector<int>& arr,int s,int e){
   if(s>=e){
     return;
   }
   int pivot=partition(arr,s,e);
   
-   return quickSort(arr,s,pivot-1);
-   return quickSort(arr,pivot+1,e);
+    solve(arr,s,pivot-1);
+    solve(arr,pivot+1,e);
   
 }
-int main() {
-  int arr[] = {50,40,20,10,5,100};
-  int n = end(arr)-begin(arr);
-  quickSort(arr,0,n-1);
-  for(int i=0;i<n;i++){
-    cout<<arr[i]<<" ";
-  }
-  
+
+
+vector<int> quickSort(vector<int> arr)
+{
+    // Write your code here.
+    int n = arr.size();
+    solve(arr,0,n-1);
+    return arr;
 }
