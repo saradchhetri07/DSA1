@@ -1,3 +1,4 @@
+//https://leetcode.com/problems/subsets/
 void solve(vector<int> nums,int index,vector<vector<int>>& ans,vector<int> output){
     if(index==nums.size()){
         ans.push_back(output);
